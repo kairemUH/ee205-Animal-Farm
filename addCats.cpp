@@ -17,7 +17,7 @@
 #include "catDatabase.h"
 #include "addCats.h"
 
-int addCat( const char n[], enum Gender g, enum Breed b, bool fix, float w, enum Color collar1, enum Color collar2, unsigned long long license ) {
+int addCat( const char n[], enum Gender g, enum Breed b, bool fix, Weight w, enum Color collar1, enum Color collar2, unsigned long long license ) {
 
 
     if( isFull() || nameInDatabase(n) || ! nameIsValid(n) || ! weightIsValid(w) ) {

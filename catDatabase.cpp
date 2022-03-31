@@ -22,7 +22,7 @@
 
 struct Cat catArray[MAX_CAT]; //Cat Database
 
-int numCats = 0;              //The high water mark for the array (The number of cats in the array)
+NumCats numCats = 0;              //The high water mark for the array (The number of cats in the array)
 
 
 ////////////////////  Enum Functions  ////////////////////
@@ -146,7 +146,7 @@ bool nameInDatabase( const char name[] ) {
 }
 
 
-bool weightIsValid( float weight ) {
+bool weightIsValid( Weight weight ) {
 
     if ( weight <= 0 ) {
 

@@ -14,6 +14,12 @@
 #define MAX_CAT 1024
 #define MAX_CAT_NAME 50
 
+typedef float Weight;
+
+typedef int NumCats;
+
+
+
 enum Gender {UNKNOWN_GENDER, MALE, FEMALE};
 
 enum Breed {UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX};
@@ -26,7 +32,7 @@ struct Cat {
     enum Gender gender;
     enum Breed breed;
     bool isFixed;
-    float weight;
+    Weight weight;
     enum Color collarColor1;
     enum Color collarColor2;
     unsigned long long license;
@@ -36,7 +42,7 @@ struct Cat {
 
 extern struct Cat catArray[MAX_CAT];
 
-extern int numCats;
+extern NumCats numCats;
 
 
 extern const char* genderName( enum Gender gender );
@@ -50,7 +56,7 @@ extern bool nameIsValid( const char name[] );
 
 extern bool nameInDatabase( const char name[] );
 
-extern bool weightIsValid( float weight );
+extern bool weightIsValid( Weight weight );
 
 extern bool isFull();
 
