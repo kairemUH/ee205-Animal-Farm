@@ -13,6 +13,8 @@
 
 #define MAX_CAT_NAME (50)
 
+#define UNKNOWN_WEIGHT (-1)
+
 typedef float Weight ;
 
 enum Gender {UNKNOWN_GENDER, MALE, FEMALE};
