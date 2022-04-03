@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///         University of Hawaii, College of Engineering
-/// @brief  Project - EE 205 - Spr 2022
+/// @brief  Animal Farm 2 - EE 205 - Spr 2022
 ///
 /// @file deleteCats.h
 /// @version 1.0
