@@ -52,3 +52,10 @@ bool validateDatabase() {
     return true;
 
 }
+
+
+bool isDatabaseEmpty() {
+
+    return catDatabaseHeadPointer == nullptr;
+
+}

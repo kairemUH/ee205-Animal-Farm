@@ -15,9 +15,11 @@
 
 extern Cat* catDatabaseHeadPointer;
 
-extern bool isCatInDatabase( const Cat* cat );
+extern bool isCatInDatabase( const Cat* cat );  // returns true if cat is in database
 
-extern bool validateDatabase();
+extern bool validateDatabase();     // returns true if database is valid
+
+extern bool isDatabaseEmpty();      // returns true if database is empty
 
 //@todo future implementation of duplicate name checking
 //@todo add initialize database funciton that memsets the arrays to zero
