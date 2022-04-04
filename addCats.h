@@ -13,4 +13,4 @@
 
 #include "Cat.h"
 
-extern bool addCat( Cat* newCat ) ;
+extern bool addCat( Cat* newCat ) ; // returns true if successful
