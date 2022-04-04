@@ -36,12 +36,11 @@ Cat::Cat() {
     zeroOutMemberData();
 }
 
-Cat::Cat(const char *n, enum Gender g, enum Breed b, bool fix, Weight w) {
+Cat::Cat(const char *n, enum Gender g, enum Breed b, Weight w) {
     if( nameIsValid(n) && genderIsValid(g) && breedIsValid(b) && weightIsValid(w) ) {
         strcpy(Cat::name, n);
         Cat::gender = g;
         Cat::breed = b;
-        Cat::fixed = fix;
         Cat::weight = w;
     }
 
@@ -81,14 +80,20 @@ void Cat::setName( const char newName[] ) {
 }
 
 void Cat::setGender(enum Gender newGender) {
-    if( genderIsValid(newGender) ) {
+    if( Cat::gender == UNKNOWN_GENDER && genderIsValid(newGender) ) {
         Cat::gender = newGender;
+    }
+    else {
+        throw std::invalid_argument( "Cat gender already set." );
     }
 }
 
 void Cat::setBreed(enum Breed newBreed) {
-    if( breedIsValid(newBreed) ) {
+    if( Cat::breed == UNKNOWN_BREED && breedIsValid(newBreed) ) {
         Cat::breed = newBreed;
+    }
+    else {
+        throw std::invalid_argument( "Cat breed already set." );
     }
 }
 

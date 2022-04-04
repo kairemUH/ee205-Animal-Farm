@@ -31,7 +31,7 @@ public:
 public:
     Cat();
 
-    Cat(const char n[], enum Gender g, enum Breed b, bool fix, Weight w);
+    Cat(const char n[], enum Gender g, enum Breed b, Weight w);
 
 
 ////////////////////  Getters and Setters  ////////////////////
