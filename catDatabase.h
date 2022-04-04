@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "Cat.h"
+
 
 extern Cat* catDatabaseHeadPointer;
 extern bool isCatInDatabase( const Cat* cat );

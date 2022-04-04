@@ -15,8 +15,8 @@
 #include <iomanip>
 #include <cassert>
 
-#include "Cat.h"
 #include "config.h"
+#include "Cat.h"
 #include "reportCats.h"
 
 #define FORMAT_LINE( className, member ) std::cout << std::setw(8) << (className) << std::setw(20) << (member) << std::setw(52)
