@@ -11,10 +11,12 @@
 
 #pragma once
 
-
+#include "Cat.h"
 
 extern Cat* catDatabaseHeadPointer;
+
 extern bool isCatInDatabase( const Cat* cat );
+
 extern bool validateDatabase();
 
 //@todo future implementation of duplicate name checking

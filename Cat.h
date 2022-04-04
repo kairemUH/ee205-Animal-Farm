@@ -11,9 +11,11 @@
 
 #pragma once
 
+#include "config.h"
+
 class Cat {
 
-////////// Member Variables //////////
+////////////////////  Member Variables  ////////////////////
 protected:
     char name[MAX_CAT_NAME];
     enum Gender gender;
@@ -25,14 +27,14 @@ public:
     Cat *next;
 
 
-////////// Constructors //////////
+////////////////////  Constructors  ////////////////////
 public:
     Cat();
 
     Cat(const char n[], enum Gender g, enum Breed b, bool fix, Weight w);
 
 
-////////// Getters and Setters //////////
+////////////////////  Getters and Setters  ////////////////////
 public:
     char *getName();
 
@@ -55,7 +57,7 @@ public:
     void setWeight(Weight newWeight);
 
 
-////////// Print and Validation //////////
+////////////////////  Print and Validation  ////////////////////
 public:
     bool print();
 
@@ -70,7 +72,7 @@ public:
     bool breedIsValid(enum Breed breed);
 
 
-////////// Private Functions //////////
+////////////////////  Private Functions  ////////////////////
 private:
     void zeroOutMemberData();
 

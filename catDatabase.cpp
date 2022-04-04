@@ -12,11 +12,12 @@
 #include <iostream>
 #include <cassert>
 
-#include "Cat.h"
+#include "config.h"
 #include "catDatabase.h"
 #include "addCats.h"
 #include "reportCats.h"
 #include "deleteCats.h"
+
 
 Cat* catDatabaseHeadPointer = nullptr;
 

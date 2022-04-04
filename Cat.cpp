@@ -15,7 +15,6 @@
 #include <iomanip>
 #include <cassert>
 
-#include "config.h"
 #include "Cat.h"
 #include "reportCats.h"
 
@@ -31,7 +30,7 @@ void Cat::zeroOutMemberData() {
 }
 
 
-////////// Constructors //////////
+////////////////////  Constructors  ////////////////////
 
 Cat::Cat() {
     zeroOutMemberData();
@@ -50,7 +49,7 @@ Cat::Cat(const char *n, enum Gender g, enum Breed b, bool fix, Weight w) {
 }
 
 
-////////// Getters //////////
+////////////////////  Getters  ////////////////////
 
 char* Cat::getName() {
     return Cat::name;
@@ -73,7 +72,7 @@ Weight Cat::getWeight() {
 }
 
 
-////////// Setters //////////
+////////////////////  Setters  ////////////////////
 
 void Cat::setName( const char newName[] ) {
     if( nameIsValid(newName) ) {
@@ -104,7 +103,7 @@ void Cat::setWeight(Weight newWeight) {
 }
 
 
-////////// Print and Validation //////////
+////////////////////  Print and Validation  ////////////////////
 
 
 
