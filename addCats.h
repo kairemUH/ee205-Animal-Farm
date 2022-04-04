@@ -11,4 +11,6 @@
 
 #pragma once
 
-extern int addCat( const char n[], enum Gender g, enum Breed b, bool fix, Weight w, enum Color collar1, enum Color collar2, unsigned long long license );
+#include "Cat.h"
+
+extern bool addCat( Cat* newCat ) ;
