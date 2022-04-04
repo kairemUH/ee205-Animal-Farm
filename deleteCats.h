@@ -11,7 +11,11 @@
 
 #pragma once
 
-extern void deleteAllCats();
+#include "Cat.h"
 
-//@todo add function deleteCat(index) that removes an index from the arrays
+extern bool deleteCat( Cat* cat );  // returns true if successful
+
+extern bool deleteAllCats();        // returns true if successful
+
+
 

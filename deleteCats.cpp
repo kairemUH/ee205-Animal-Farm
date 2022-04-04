@@ -9,14 +9,55 @@
 /// @date   19_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
+#include <iostream>
+#include <cassert>
 
+#include "deleteCats.h"
 #include "catDatabase.h"
 
-void deleteAllCats() {
-    numCats = 0;        //Set high water mark to 0
+
+bool deleteCat( Cat* cat ) {
+
+    assert( cat != nullptr );
+    assert( validateDatabase() );
+
+    //special case for cat being first in database
+    if( cat == catDatabaseHeadPointer ) {
+        catDatabaseHeadPointer = catDatabaseHeadPointer->next;
+        delete cat;
+        return true;
+    }
+
+
+    Cat* iCat = catDatabaseHeadPointer ;
+
+    while( iCat != nullptr ) {
+
+        if (iCat->next == cat) {    // check for cat
+
+            iCat->next = cat->next;     // cut cat out of database
+            delete cat;                 // free up the memory
+
+            assert( validateDatabase() );
+            return true;
+
+        }
+
+        iCat = iCat->next;  // iterate
+
+    }
+
+    throw std::invalid_argument( "Cat is not in database." );
+
 }
 
+
+bool deleteAllCats() {
+
+    while( catDatabaseHeadPointer != nullptr ) {    // iterate through database deleting all cats
+        deleteCat (catDatabaseHeadPointer);
+    }
+
+    return true;
+
+}
