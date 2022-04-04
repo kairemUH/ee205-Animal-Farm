@@ -17,6 +17,7 @@
 
 #include "Cat.h"
 #include "config.h"
+#include "reportCats.h"
 
 #define FORMAT_LINE( className, member ) std::cout << std::setw(8) << (className) << std::setw(20) << (member) << std::setw(52)
 
@@ -37,11 +38,13 @@ Cat::Cat() {
 }
 
 Cat::Cat(const char *n, enum Gender g, enum Breed b, bool fix, Weight w) {
-    strcpy(Cat::name, n);
-    Cat::gender = g;
-    Cat::breed = b;
-    Cat::fixed = fix;
-    Cat::weight = w;
+    if( nameIsValid(n) && genderIsValid(g) && breedIsValid(b) && weightIsValid(w) ) {
+        strcpy(Cat::name, n);
+        Cat::gender = g;
+        Cat::breed = b;
+        Cat::fixed = fix;
+        Cat::weight = w;
+    }
 
     assert( catIsValid() == true );
 }
@@ -73,15 +76,21 @@ Weight Cat::getWeight() {
 ////////// Setters //////////
 
 void Cat::setName( const char newName[] ) {
-    strcpy(Cat::name, newName);
+    if( nameIsValid(newName) ) {
+        strcpy(Cat::name, newName);
+    }
 }
 
 void Cat::setGender(enum Gender newGender) {
-    Cat::gender = newGender;
+    if( genderIsValid(newGender) ) {
+        Cat::gender = newGender;
+    }
 }
 
 void Cat::setBreed(enum Breed newBreed) {
-    Cat::breed = newBreed;
+    if( breedIsValid(newBreed) ) {
+        Cat::breed = newBreed;
+    }
 }
 
 void Cat::fixCat() {
@@ -89,7 +98,9 @@ void Cat::fixCat() {
 }
 
 void Cat::setWeight(Weight newWeight) {
-    Cat::weight = newWeight;
+    if( weightIsValid(newWeight) ){
+        Cat::weight = newWeight;
+    }
 }
 
 
