@@ -11,9 +11,15 @@
 
 #pragma once
 
-extern int printCat( int index );
+#include "config.h"
+#include "Cat.h"
+
+////////////////////  Enum Functions  ////////////////////
+extern const char* genderName( enum Gender gender );
+extern const char* breedName( enum Breed breed );
+extern const char* colorName( enum Color color );
+
+extern Cat* findCatByName( const char name[] );
 
 extern void printAllCats();
-
-extern int findCat( const char n[] );
 

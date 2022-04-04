@@ -9,77 +9,116 @@
 /// @date   19_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
+#include <iostream>
+#include <cassert>
+#include <cstring>
 
 #include "reportCats.h"
 #include "catDatabase.h"
 
 
-int printCat( int index ) {
+Cat* findCatByName( const char name[] ) {
 
-    if( ! indexIsValid(index) ) {
-        return 0;
+    assert( Cat().nameIsValid(name) );
+
+    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
+        if( std::strcmp( name, iCat->getName() ) == 0 ) {
+            return iCat ;
+        }
     }
 
-    else {
-        printf( "cat index = [%d]  ",      index );
-        printf( "name = [%s]  ",           catArray[index].name );
-        printf( "gender = [%s]  ",         genderName(catArray[index].gender) );
-        printf( "breed = [%s]  ",          breedName(catArray[index].breed) );
-        printf( "isFixed = [%d]  ",        catArray[index].isFixed );
-        printf( "weight = [%f]  ",         catArray[index].weight );
-        printf( "collar 1 color = [%s]  ", colorName(catArray[index].collarColor1) );
-        printf( "collar 2 color = [%s]  ", colorName(catArray[index].collarColor2) );
-        printf( "license = [%llu]  ",      catArray[index].license );
-        printf( "\n" );
-    }
-
-    return 1;
-
+    return nullptr;
 }
 
 
 void printAllCats() {
 
-    for(int i = 0; i < numCats; i++) {
-        printf( "cat index = [%d]  ",      i );
-        printf( "name = [%s]  ",           catArray[i].name );
-        printf( "gender = [%s]  ",         genderName(catArray[i].gender) );
-        printf( "breed = [%s]  ",          breedName(catArray[i].breed) );
-        printf( "isFixed = [%d]  ",        catArray[i].isFixed );
-        printf( "weight = [%f]  ",         catArray[i].weight );
-        printf( "collar 1 color = [%s]  ", colorName(catArray[i].collarColor1) );
-        printf( "collar 2 color = [%s]  ", colorName(catArray[i].collarColor2) );
-        printf( "license = [%llu]  ",      catArray[i].license );
-        printf( "\n" );
+    assert( validateDatabase() );
+
+    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
+        iCat->print() ;
     }
 
 }
 
 
-int findCat( const char n[] ) {
+////////////////////  Enum Functions  ////////////////////
 
-    if( ! nameIsValid(n) ) {
-        return -1;
+const char* genderName( enum Gender gender ) {
+
+    switch (gender) {
+        case 0:
+            return "Unknown Gender";
+            break;
+        case 1:
+            return "Male";
+            break;
+        case 2:
+            return "Female";
+            break;
+        default:
+            return "Unknown Gender";
+            break;
     }
-
-    else {
-
-        for( int i = 0; i < numCats; i++ ) {
-
-            if ( strcmp(catArray[i].name, n) == 0 ) {
-                return i;
-            }
-
-        }
-
-    }
-
-    fprintf(stderr, "Cat [%s] not in database.\n", n);
-    return -1;
 
 }
+
+
+const char* breedName( enum Breed breed ) {
+
+    switch (breed) {
+        case 0:
+            return "Unknown Breed";
+            break;
+        case 1:
+            return "Maine Coon";
+            break;
+        case 2:
+            return "Manx";
+            break;
+        case 3:
+            return "Shorthair";
+            break;
+        case 4:
+            return "Persian";
+            break;
+        case 5:
+            return "Sphynx";
+            break;
+        default:
+            return "Unknown Gender";
+            break;
+    }
+
+}
+
+
+const char* colorName( enum Color color ) {
+
+    switch (color) {
+        case 0:
+            return "Black";
+            break;
+        case 1:
+            return "White";
+            break;
+        case 2:
+            return "Red";
+            break;
+        case 3:
+            return "Blue";
+            break;
+        case 4:
+            return "Green";
+            break;
+        case 5:
+            return "Pink";
+            break;
+        default:
+            return "Unknown Color";
+            break;
+    }
+
+}
+
 
