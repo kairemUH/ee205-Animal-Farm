@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///         University of Hawaii, College of Engineering
-/// @brief  animalFarm - EE 205 - Spr 2022
+/// @brief  Animal Farm 3 - EE 205 - Spr 2022
 ///
 /// @file Mammal.h
 /// @version 1.0
