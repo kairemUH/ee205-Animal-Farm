@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "Animal.h"
-#include "Node.h"
+
 
 
 const std::string Animal::KINGDOM_NAME = "Animalia";
@@ -97,9 +97,7 @@ void Animal::dump() const noexcept {
     FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << species << std::endl ;
     FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << classification << std::endl ;
     FORMAT_LINE_FOR_DUMP( "Animal", "gender" ) << gender << std::endl ;
-    FORMAT_LINE_FOR_DUMP( "Animal", "weight" ) << weight.getWeight() << std::endl ;
-    FORMAT_LINE_FOR_DUMP( "Animal", "max weight" ) << weight.getMaxWeight() << std::endl ;
-    FORMAT_LINE_FOR_DUMP( "Animal", "weight units" ) << weight.getWeightUnit() << std::endl ;
+    weight.dump();
 
 }
 

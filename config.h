@@ -14,17 +14,9 @@
 #include <iostream>
 #include <iomanip>
 
-#define MAX_CAT_NAME (50)
-
-#define UNKNOWN_WEIGHT (-1)
-
-typedef float Weight ;
-
-enum Gender {UNKNOWN_GENDER, MALE, FEMALE};
+#define MAX_NAME (50)
 
 enum Breed {UNKNOWN_BREED, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX};
-
-enum Color {BLACK, WHITE, RED, BLUE, GREEN, PINK};
 
 /// Format the heading for dumping members of a class to the console
 ///

@@ -24,6 +24,7 @@ bool Node::compareByAddress ( const Node* node1, const Node* node2 ) {
 
 void Node::dump() const {
 
+    PRINT_HEADING_FOR_DUMP;
     FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl ;
     FORMAT_LINE_FOR_DUMP( "Node", "next" ) << next << std::endl ;
 

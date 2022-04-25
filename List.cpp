@@ -12,7 +12,6 @@
 #include <cassert>
 
 #include "List.h"
-#include "Node.h"
 
 ////////////////////  Public Functions  ////////////////////
 
@@ -28,7 +27,7 @@ unsigned int List::size() const noexcept {
 
 bool List::isIn( Node *aNode ) const {
 
-    for(Node* iNode = List::head ; iNode != nullptr ; iNode = iNode->next ) {
+    for(Node* iNode = List::head ; iNode != nullptr ; iNode = iNode->Node::next ) {
         if( aNode == iNode ) {
             return true;
         }
@@ -43,7 +42,7 @@ bool List::isSorted() const noexcept {
 
     Node* temp = head;
 
-    for( Node* iNode = List::head->next ; iNode != nullptr ; iNode = iNode->next ) {
+    for( Node* iNode = List::head->Node::next ; iNode != nullptr ; iNode = iNode->Node::next ) {
 
         if( temp > iNode ) { return false; }
 

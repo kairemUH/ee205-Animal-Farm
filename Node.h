@@ -9,6 +9,9 @@
 /// @date   24_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifndef HEADERFILE_H
+#define HEADERFILE_H
+
 class Node {
 
     friend class List;
@@ -30,3 +33,4 @@ public:
 
 };
 
+#endif
