@@ -30,7 +30,7 @@ protected:
 ////////////////////  Constructors  ////////////////////
 public:
     Mammal(const Weight newMaxWeight, const std::string &newSpecies);
-    Mammal(const Color newColor, const Gender newGender, const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight, const std::string &newSpecies);
+    Mammal(const Color newColor, const Gender newGender, const Weight newWeight, const Weight newMaxWeight, const std::string &newSpecies);
 
 
 ////////////////////  Getters and Setters  ////////////////////
