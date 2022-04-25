@@ -30,6 +30,8 @@ void  SinglyLinkedList::push_front( Node* newNode ) {
 
     assert( SinglyLinkedList::validate() );
 
+    List::count ++;
+
 }
 
 
@@ -64,6 +66,7 @@ void SinglyLinkedList::insert_after( Node* currentNode, Node* newNode ) {
 
     newNode->next = currentNode->next;
     currentNode->next = newNode;
+    List::count ++;
 
 }
 
