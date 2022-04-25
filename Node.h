@@ -11,6 +11,9 @@
 
 class Node {
 
+    friend class List;
+    friend class SinglyLinkedList;
+
 ////////////////////  Member Variable  ////////////////////
 protected:
     Node* next = nullptr;
