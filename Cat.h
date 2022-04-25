@@ -14,7 +14,7 @@
 #include "config.h"
 #include "Mammal.h"
 
-class Cat : Mammal {
+class Cat : public Mammal {
 
 ////////////////////  Member Variables  ////////////////////
 public:
