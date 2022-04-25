@@ -13,143 +13,81 @@
 #include <cassert>
 #include <cstring>
 
-#include "catDatabase.h"
-#include "addCats.h"
-#include "reportCats.h"
-#include "deleteCats.h"
 #include "config.h"
 #include "Cat.h"
+#include "SinglyLinkedList.h"
 
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
 //#define DEBUG
 
 int main() {
+
     std::cout << "Starting Animal Farm 2" << std::endl;
 
-#ifdef DEBUG
-    {
-        Cat testCat = Cat();
-      // Verify that a cat's default values are set
-      try {
-          assert(testCat.getName() != nullptr);
-          assert(strcmp(testCat.getName(), "") == 0);
-          assert(testCat.getGender() == UNKNOWN_GENDER);
-          assert(testCat.getBreed() == UNKNOWN_BREED);
-          assert(testCat.isFixed() == false);
-          assert(testCat.getWeight() == UNKNOWN_WEIGHT);
-          assert(!testCat.isFixed());
-          assert(!testCat.catIsValid());  // The default cat is invalid
-      } catch (std::exception const &e) {}
-      std::cout << "default values are set" << std::endl;
 
-      // Test for NULL name
-      try {
-         testCat.setName(nullptr);
-         assert(false); // We should never get here
-      } catch (std::exception const &e) {}
-      std::cout << "tested for null name" << std::endl;
+    Cat Bob = Cat( "Bob", Color::BLUE, true, Gender::MALE, 1.2);
 
-      // Test for empty name
-      try {
-         testCat.setName("");
-         assert(false); // We should never get here
-      } catch (std::exception const &e) {}
-      std::cout << "tested for empty name" << std::endl;
+    SinglyLinkedList listOne = SinglyLinkedList();
 
-      // Test valid names
-      testCat.setName("A");       // A 1 character name is valid
-      testCat.setName("Be");     // A 2 character name is valid
-      std::cout << "tested for valid names" << std::endl;
+    listOne.push_front( &Bob );
 
-      // Test for name too large
-      try {
-         testCat.setName(ILLEGAL_NAME);
-         assert(false); // We should never get here
-      } catch (std::exception const &e) {}
-      std::cout << "tested for too large names" << std::endl;
+    Bob.dump();
 
-      testCat.setGender(FEMALE);
+    Cat Joe = Cat( "Joe" );
+    Joe.setColor( Color::WHITE );
 
-      try {
-         testCat.setGender(MALE);
-         assert(false); // We should never get here
-      } catch (std::exception const &e) {}
-      std::cout << "tested set gender" << std::endl;
+    Joe.dump();
 
-      testCat.setBreed(MAINE_COON);
+    listOne.push_front( &Joe );
 
-      try {
-         testCat.setBreed(MANX);
-         assert(false); // We should never get here
-      } catch (std::exception const &e) {}
-      std::cout << "tested set breed" << std::endl;
+    listOne.dump();
 
-      testCat.fixCat();
-      assert(testCat.isFixed());
-      std::cout << "tested fix cat" << std::endl;
+    assert( listOne.isIn(&Joe) );
+    assert( listOne.isIn(&Bob) );
 
-      // Test for Weight <= 0
-      try {
-         testCat.setWeight(0);
-         assert(false); // We should never get here
-      } catch (std::exception const &e) {}
 
-      testCat.setWeight(1.0 / 1024);
-      assert(testCat.getWeight() == 1.0 / 1024);
-      std::cout << "tested set weight" << std::endl;
+    try {
+        Bob.setName(nullptr);
+        assert(false); // We should never get here
+    } catch (std::exception const &e) {}
 
-      assert(testCat.catIsValid());  // The cat should now be valid
-      testCat.print();
-      std::cout << "tested print cat" << std::endl;
+    try {
+        Bob.setName(ILLEGAL_NAME);
+        assert(false); // We should never get here
+    } catch (std::exception const &e) {}
 
-      assert(!isCatInDatabase(&testCat)) ;
-   }
-#endif
+    try {
+        listOne.push_front( &Bob );
+        assert(false); // We should never get here
+    } catch (std::exception const &e) {}
 
-    bool result ;
-    result = addCat( new Cat( "Loki", MALE, PERSIAN, 1.0 )) ;
-    assert( result ) ;
-    if( !result ) throw std::logic_error ( "addCat() failed" ) ;
-    result = addCat( new Cat( "Milo", MALE, MANX , 1.1 )) ;
-    assert( result ) ;
-    result = addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 )) ;
-    assert( result ) ;
-    result = addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 )) ;
-    assert( result ) ;
-    result = addCat( new Cat( "Trin", FEMALE, MANX, 1.4 )) ;
-    assert( result ) ;
-    result = addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 )) ;
-    assert( result ) ;
+    assert( listOne.size() == 2 );
 
-#ifdef DEBUG
-    {
-      // Test finding a cat...
-      Cat *bella = findCatByName("Bella");
-      assert(bella != nullptr);
-      // Test not finding a cat
-      assert(findCatByName("Bella's not here") == nullptr);
-      std::cout << "tested find cat" << std::endl;
+    std::cout << std::endl;
 
-      // Test deleting a cat...
-      assert(deleteCat(bella) == true);
-      try {
-         deleteCat(bella); // Verify that Bella's not there
-      } catch (std::exception const &e) {}
 
-      bella = nullptr;
-      std::cout << "tested delete cat" << std::endl;
-   }
-#endif
+    // start of main from spec
 
-    printAllCats() ;
+    SinglyLinkedList catDB ;
+    catDB.push_front( new Cat( "Loki", Color::WHITE, true, Gender::MALE, 1.0 ) ) ;
+    catDB.push_front( new Cat( "Milo", Color::BLACK, true, Gender::MALE, 1.1 ) ) ;
+    catDB.push_front( new Cat( "Bella", Color::GREEN, true, Gender::FEMALE, 1.2 ) ) ;
+    catDB.push_front( new Cat( "Kali", Color::RED, true, Gender::FEMALE, 1.3 ) ) ;
+    catDB.push_front( new Cat( "Trin", Color::WHITE, true, Gender::FEMALE, 1.4 ) ) ;
+    catDB.insert_after(catDB.get_first(), new Cat( "Chili", Color::RED, true, Gender::MALE, 1.5 ) );
 
-    deleteAllCats() ;
+    for( Animal* pAnimal = (Animal*)catDB.get_first() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next( (Node*)pAnimal ) ) {
+        std::cout << pAnimal->speak() << std::endl;
+    }
 
-    printAllCats() ;
+    catDB.validate() ;
+    catDB.dump() ;
+    catDB.deleteAllNodes() ;
+    catDB.dump() ;
 
-    std::cout << "Done with Animal Farm 2" << std::endl;
+
+    std::cout << "Done with Animal Farm 3" << std::endl;
 
     return( EXIT_SUCCESS ) ;
 }
-
