@@ -21,9 +21,12 @@ const std::string Animal::KINGDOM_NAME = "Animalia";
 Animal::Animal( Weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies ) {
 
     if( newMaxWeight.validate() && validateClassification(newClassification) && validateSpecies(newSpecies) ) {
+
+        Animal::gender = Gender::UNKNOWN_GENDER;
         Animal::weight.setMaxWeight( newMaxWeight.getWeight( Animal::weight.getWeightUnit() ) );
         Animal::classification = newClassification;
         Animal::species = newSpecies;
+
     }
 
 }
@@ -32,11 +35,13 @@ Animal::Animal( Weight newMaxWeight, const std::string &newClassification, const
 Animal::Animal( const Gender newGender, const Weight newWeight, const Weight newMaxWeight, const std::string &newClassification, const std::string &newSpecies ) {
 
     if( newMaxWeight.validate() && newWeight.validate() && validateClassification(newClassification) && validateSpecies(newSpecies) ) {
+
         Animal::gender = newGender;
         Animal::weight.setWeight( newWeight.getWeight( Animal::weight.getWeightUnit() ) );
         Animal::weight.setMaxWeight( newMaxWeight.getWeight( Animal::weight.getWeightUnit() ) );
         Animal::classification = newClassification;
         Animal::species = newSpecies;
+
     }
 
 }
