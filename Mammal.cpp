@@ -19,7 +19,7 @@ Mammal::Mammal( const Weight newMaxWeight, const std::string &newSpecies ) : Ani
 
 
 Mammal::Mammal( const Color newColor, const Gender newGender, const Weight newWeight, const Weight newMaxWeight, const std::string &newSpecies ) :
-Animal ( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {}
+Animal ( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ), color(newColor) {}
 
 
 
