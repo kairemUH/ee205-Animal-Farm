@@ -56,7 +56,7 @@ void Cat::fixCat() noexcept {
 
 std::string Cat::speak() const noexcept {
 
-    std::cout << "Meow" << std::endl;
+    return "Meow";
 
 }
 
