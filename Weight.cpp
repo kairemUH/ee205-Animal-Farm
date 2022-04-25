@@ -318,10 +318,6 @@ bool Weight::validate() const {
 
 void Weight::dump() const noexcept {
 
-    std::cout << std::setw(80) << std::setfill( '=' ) << "" << std::endl ;
-    std::cout << std::setfill( ' ' ) ;
-    std::cout << std::left ;
-    std::cout << std::boolalpha ;
     FORMAT_LINE( "Weight", "this" )         << this                 << std::endl ;
     FORMAT_LINE( "Weight", "isKnown" )      << Weight::bIsKnown     << std::endl ;
     FORMAT_LINE( "Weight", "weight" )       << Weight::weight       << std::endl ;
