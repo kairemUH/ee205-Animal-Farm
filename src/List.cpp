@@ -9,6 +9,7 @@
 /// @date   24_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include <iostream>
 #include <cassert>
 
 #include "List.h"
@@ -67,7 +68,7 @@ void List::deleteAllNodes() noexcept {
         pop_front();
     }
 #ifdef DEBUG
-    cout << PROGRAM_NAME << ": All Nodes have been deleted" << endl ;
+    std::cout << "All Nodes have been deleted" << std::endl ;
 #endif
     assert( validate() );
 
